@@ -21,3 +21,6 @@ rode este comando no terminal para ver todos os erros que o eslint mostra
 
 <!-- integrando react router Dom-->
 - npm i react-router-dom
+
+<!-- biblioteca de icones -->
+- npm i phosphor-react  
