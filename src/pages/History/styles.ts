@@ -60,3 +60,32 @@ export const HistoryList = styled.div`
     }
   }
 `
+
+// criando tipagem para pegar a cor lá dos temas
+// encontrar nas lista de cores só as ques serão usadas
+const STATUS_COLORS = {
+  yellow: 'yellow-500',
+  green: 'green-500',
+  red: 'red-500',
+} as const
+
+// pegando o valor das cores de status color
+interface StatusProps {
+  statusColor: keyof typeof STATUS_COLORS
+}
+
+// color do status
+export const Status = styled.span<StatusProps>`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  /* adicionando o elemento pelo css */
+  &::before {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: ${(props) => props.theme[STATUS_COLORS[props.statusColor]]};
+  }
+`
