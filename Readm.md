@@ -17,3 +17,7 @@ rode este comando no terminal para ver todos os erros que o eslint mostra
 
 // agora só rodar deste modo 
 - npm run lint --fix
+
+
+<!-- integrando react router Dom-->
+- npm i react-router-dom
