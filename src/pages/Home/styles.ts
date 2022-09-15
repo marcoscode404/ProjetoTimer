@@ -21,7 +21,7 @@ export const FormContainer = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 03.5rem;
+  gap: 0.35rem;
   color: ${(props) => props.theme['gray-100']};
   font-size: 1.125rem;
   font-weight: bold;
