@@ -33,3 +33,6 @@
 
 <!-- permite integrar as bibliotecas de validação e forms -->
 - npm i @hookform/resolvers
+
+<!-- date fns -->
+- npm i date-fns
