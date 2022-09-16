@@ -26,7 +26,7 @@ const newCycleFormValidationSchema = zod.object({
   task: zod.string().min(1, 'Informe a tarefa'),
   minutesAmount: zod
     .number()
-    .min(5, 'O ciclo precisa ser de no minimo 5 segundos')
+    .min(1, 'O ciclo precisa ser de no minimo 5 segundos')
     .max(60, 'O ciclo precisa ser de no maximo 60 segundos'),
 })
 
@@ -82,6 +82,9 @@ export function Home() {
               }
             }),
           )
+
+          setAmountSecondsPassed(totalSeconds)
+          clearInterval(interval)
         } else {
           setAmountSecondsPassed(secondsDifference)
         }
@@ -176,7 +179,7 @@ export function Home() {
             id="minutesAmount"
             placeholder="00"
             step={5}
-            min={5}
+            min={1}
             max={60}
             disabled={!!activeCycle}
             {...register('minutesAmount', { valueAsNumber: true })}
