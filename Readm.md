@@ -24,3 +24,6 @@ rode este comando no terminal para ver todos os erros que o eslint mostra
 
 <!-- biblioteca de icones -->
 - npm i phosphor-react  
+
+<!-- biblioteca de formularios -->
+- npm i react-hook-form 
