@@ -6,7 +6,7 @@
 - npm i eslint -D
 - npm i @rocketseat/eslint-config -D
 
-rode este comando no terminal para ver todos os erros que o eslint mostra
+## rode este comando no terminal para ver todos os erros que o eslint mostra
 - npx eslint src --ext .ts,.tsx
 
 <!-- ajusta todos os erro de padrões -->
@@ -15,7 +15,7 @@ rode este comando no terminal para ver todos os erros que o eslint mostra
 // adicionei esse codigo dentro de package.json e só rodar o comando 
 - npm run lint
 
-// agora só rodar deste modo 
+## agora só rodar deste modo 
 - npm run lint --fix
 
 
@@ -27,3 +27,9 @@ rode este comando no terminal para ver todos os erros que o eslint mostra
 
 <!-- biblioteca de formularios -->
 - npm i react-hook-form 
+
+<!-- instalando biblioteca de validação -->
+- npm i zod
+
+<!-- permite integrar as bibliotecas de validação e forms -->
+- npm i @hookform/resolvers
