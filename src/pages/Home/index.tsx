@@ -12,6 +12,7 @@ import {
   StartCountdownButton,
   TaskInput,
 } from './styles'
+import { useState } from 'react'
 
 //  controlled
 //  uncontrolled -> usado e aplicações com muitos input
@@ -30,7 +31,18 @@ const newCycleFormValidationSchema = zod.object({
 // tipando a const javascript para o typescript
 type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>
 
+// interface
+interface Cycle {
+  id: string
+  task: string
+  minutesAmount: number
+}
+
 export function Home() {
+  const [cycles, setCycles] = useState<Cycle[]>([])
+  // quando não houver nenhum ciclo na tela
+  const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
+
   const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
     resolver: zodResolver(newCycleFormValidationSchema),
     defaultValues: {
@@ -41,9 +53,23 @@ export function Home() {
 
   // criar um novo ciclo
   function handleCreateNewCycle(data: NewCycleFormData) {
-    console.log(data)
+    const id = String(new Date().getTime())
+
+    const newCycle: Cycle = {
+      id,
+      task: data.task,
+      minutesAmount: data.minutesAmount,
+    }
+
+    setCycles((state) => [...state, newCycle])
+    setActiveCycleId(id)
+
     reset()
   }
+
+  const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
+
+  console.log(activeCycle)
 
   // quero observar o campo de task para saber o valor
   // criei uma variavel auxiliar quando o submit tiver disabled
