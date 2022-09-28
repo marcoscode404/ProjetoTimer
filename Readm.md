@@ -18,6 +18,8 @@
 ## agora só rodar deste modo 
 - npm run lint --fix
 
+## para desinstalar o eslint do projeto
+-- apague o arquivo .eslintrc.json e no package.json https://stackoverflow.com/questions/49227262/how-to-install-eslint-globally
 
 <!-- integrando react router Dom-->
 - npm i react-router-dom
