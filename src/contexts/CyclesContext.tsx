@@ -1,19 +1,10 @@
 import { createContext, ReactNode, useReducer, useState } from 'react'
+import { Cycle, cyclesReducer } from '../reducers/cycles'
 
 // interface criar ciclo
 interface CreateCycleData {
   task: string
   minutesAmount: number
-}
-
-// interface
-interface Cycle {
-  id: string
-  task: string
-  minutesAmount: number
-  startDate: Date
-  interruptedDate?: Date
-  finishedDate?: Date
 }
 
 // Typagem dos contextos
@@ -36,66 +27,14 @@ interface CyclesContextProviderProps {
   children: ReactNode
 }
 
-// tipando reducer
-interface CycleState {
-  cycles: Cycle[]
-  activeCycleId: string | null
-}
-
 // controlando varios estados por meio do reducer
 export function CyclesContextProvider({
   children,
 }: CyclesContextProviderProps) {
-  const [cyclesState, dispatch] = useReducer(
-    (state: CycleState, action: any) => {
-      switch (action.type) {
-        // caso criado novo ciclo
-        case 'ADD_NEW_CYCLE':
-          return {
-            ...state,
-            cycles: [...state.cycles, action.payload.newCycle],
-            activeCycleId: action.payload.newCycle.id,
-          }
-
-        // caso o ciclo seja interrompido
-        case 'INTERRUPT_CURRENT_CYCLE':
-          return {
-            ...state,
-            cycles: state.cycles.map((cycle) => {
-              if (cycle.id === state.activeCycleId) {
-                return { ...cycle, interruptedDate: new Date() }
-              } else {
-                return cycle
-              }
-            }),
-            activeCycleId: null,
-          }
-
-        // caso o ciclo seja finalizado
-        case 'MARK_CURRENT_CYCLE_AS_FINISHED':
-          return {
-            ...state,
-            cycles: state.cycles.map((cycle) => {
-              if (cycle.id === state.activeCycleId) {
-                return { ...cycle, finishedDate: new Date() }
-              } else {
-                return cycle
-              }
-            }),
-            activeCycleId: null,
-          }
-
-        // caso nenhuma das condições acima for lida
-        default:
-          return state
-      }
-    },
-
-    {
-      cycles: [],
-      activeCycleId: null,
-    },
-  )
+  const [cyclesState, dispatch] = useReducer(cyclesReducer, {
+    cycles: [],
+    activeCycleId: null,
+  })
   // quando não houver nenhum ciclo na tela
   const [amountSecondsPassed, setAmountSecondsPassed] = useState(0)
 
