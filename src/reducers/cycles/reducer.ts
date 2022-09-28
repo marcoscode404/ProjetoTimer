@@ -1,3 +1,5 @@
+import { ActionTypes } from './actions'
+
 // interface
 export interface Cycle {
   id: string
@@ -12,14 +14,6 @@ export interface Cycle {
 interface CyclesState {
   cycles: Cycle[]
   activeCycleId: string | null
-}
-
-// definindo o valor da actions - caso for criar novos dispatch é só passar
-// a action types que ele vai listar o que pode ser usado
-export enum ActionTypes {
-  ADD_NEW_CYCLE = 'ADD_NEW_CYCLE',
-  INTERRUPT_CURRENT_CYCLE = 'INTERRUPT_CURRENT_CYCLE',
-  MARK_CURRENT_CYCLE_AS_FINISHED = 'MARK_CURRENT_CYCLE_AS_FINISHED',
 }
 
 export function cyclesReducer(state: CyclesState, action: any) {
