@@ -38,3 +38,6 @@
 
 <!-- date fns -->
 - npm i date-fns
+
+<!-- immer - biblioteca para trabalhar com dados imutaveis imutabilidade -->
+- npm i immer
