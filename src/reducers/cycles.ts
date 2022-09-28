@@ -14,10 +14,18 @@ interface CyclesState {
   activeCycleId: string | null
 }
 
+// definindo o valor da actions - caso for criar novos dispatch é só passar
+// a action types que ele vai listar o que pode ser usado
+export enum ActionTypes {
+  ADD_NEW_CYCLE = 'ADD_NEW_CYCLE',
+  INTERRUPT_CURRENT_CYCLE = 'INTERRUPT_CURRENT_CYCLE',
+  MARK_CURRENT_CYCLE_AS_FINISHED = 'MARK_CURRENT_CYCLE_AS_FINISHED',
+}
+
 export function cyclesReducer(state: CyclesState, action: any) {
   switch (action.type) {
     // caso criado novo ciclo
-    case 'ADD_NEW_CYCLE':
+    case ActionTypes.ADD_NEW_CYCLE:
       return {
         ...state,
         cycles: [...state.cycles, action.payload.newCycle],
@@ -25,7 +33,7 @@ export function cyclesReducer(state: CyclesState, action: any) {
       }
 
     // caso o ciclo seja interrompido
-    case 'INTERRUPT_CURRENT_CYCLE':
+    case ActionTypes.INTERRUPT_CURRENT_CYCLE:
       return {
         ...state,
         cycles: state.cycles.map((cycle) => {
@@ -39,7 +47,7 @@ export function cyclesReducer(state: CyclesState, action: any) {
       }
 
     // caso o ciclo seja finalizado
-    case 'MARK_CURRENT_CYCLE_AS_FINISHED':
+    case ActionTypes.MARK_CURRENT_CYCLE_AS_FINISHED:
       return {
         ...state,
         cycles: state.cycles.map((cycle) => {
